@@ -6,35 +6,47 @@
     android:layout_height="match_parent"
     tools:context="com.example.fragment.MainActivity">
 
-    <Button
-        android:id="@+id/btnFragment1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fragment 1"
-        app:layout_constraintEnd_toStartOf="@+id/btnFragment2"
-        app:layout_constraintHorizontal_bias="0.5"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnFragment2"
+    <TextView
+        android:id="@+id/fragmentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnFragment1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="24dp"
+        android:text="Test text"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-    <FrameLayout
-        android:id="@+id/frlFragment"
-        android:layout_width="402dp"
-        android:layout_height="601dp"
+    <Button
+        android:id="@+id/fragment1btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Fragment 1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment2btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/fragment2btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Fragment 2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFragment1" />
+        app:layout_constraintStart_toEndOf="@+id/fragment1btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
