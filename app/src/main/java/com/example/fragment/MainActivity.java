@@ -13,11 +13,8 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button firstFragmentBtn = findViewById(R.id.fragment1btn);
-    Button secondFragmentBtn = findViewById(R.id.fragment2btn);
-
-    TextView fragmentText = (TextView) findViewById(R.id.fragmentText);
-
+    Button firstFragmentBtn, secondFragmentBtn;
+    TextView fragmentText;
     private ItemViewModel viewModel;
 
     @Override
@@ -25,20 +22,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        firstFragmentBtn = findViewById(R.id.fragment1btn);
+        secondFragmentBtn = findViewById(R.id.fragment2btn);
 
-        viewModel.getSelectedItem().observe(this, item -> {
-
-            fragmentText.setText((item));
-        });
-
+        fragmentText = findViewById(R.id.fragmentText);
 
         firstFragmentBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+            @Override public void onClick(View v) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, fragment1.class, null)
+                        .commit();
             }
         });
+
+        secondFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, fragment2.class, null)
+                        .commit();
+            }
+        });
+
+        //
+
+        viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        viewModel.getSelectedItem().observe(this, item ->{
+
+            fragmentText.setText(item);
+        });
     }
+
+
 
 }
